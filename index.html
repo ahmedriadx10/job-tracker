@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"  class="bg-[#F8FAFC]">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,7 +28,32 @@
   
   <!-- DashBoard Area -->
 
-  <section></section>
+  <section class="w-[90%] mx-auto max-w-6xl  border-b-2  border-gray-300 pt-16 pb-[30px]">
+    <!-- dashboard heading -->
+     <h2 class="font-bold text-[32px] text-[#002C5C]">Job Application Tracker</h2>
+
+     <!-- main dashboard -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
+
+  <!-- total -->
+<div class="p-5 bg-white rounded-lg border border-gray-100">
+  <h6 class="font-medium text-[#323B49]">Total</h6>
+  <p id="total-application" class="text-[#002C5C] text-2xl font-bold">0</p>
+</div>
+
+<!-- interview -->
+ <div class="p-5 bg-white rounded-lg border border-gray-100">
+  <h6 class="font-medium text-[#323B49]">Interview</h6>
+  <p id="dashboard-interview--count" class="text-[#10B981] text-2xl font-bold">0</p>
+ </div>
+ <!-- rejected -->
+  <div class="p-5 bg-white rounded-lg border border-gray-100">
+      <h6 class="font-medium text-[#323B49]">Rejected</h6>
+  <p id="dashboard-rejected-count" class="text-[#EF4444] text-2xl font-bold">0</p>
+  </div>
+</div>
+
+  </section>
 
 </body>
 </html>
