@@ -64,11 +64,11 @@
 
 <!-- filter button area -->
 
-<div class="space-x-2">
+<div class="space-x-2" id="filter-button-container">
 
-<button id="" class="filte-btn btn px-8 bg-[#3B82F6] text-white">All</button>
-<button id="" class="filte-btn btn">Interview</button>
-<button id="" class="filte-btn btn">Rejected</button>
+<button id="all-btn" class="filter-btn btn px-8 bg-primary text-white" onclick="changeTab('job-card-container')">All</button>
+<button id="interview-btn" class="filter-btn btn" onclick="changeTab('interview-cards')">Interview</button>
+<button id="rejected-btn" class="filter-btn btn" onclick="changeTab('rejected-cards')">Rejected</button>
 
 </div>
 
@@ -408,10 +408,10 @@
 
 <!-- interview filterd job cards -->
 
-<section id="interview-cards" class="display-magic w-[90%] mx-auto max-w-6xl mt-[30px]  space-y-4">
+<section id="interview-cards" class="display-magic w-[90%] mx-auto max-w-6xl mt-[30px]  space-y-4 hidden">
 
   <!-- default skeleton show -->
-<div class="py-[110px] flex gap-5 flex-col justify-center items-center bg-white rounded-lg border border-gray-100" id="interview-skeleton">
+<div class="py-[110px] flex gap-5 flex-col justify-center items-center bg-white rounded-lg border border-gray-100 " id="interview-skeleton">
 <div ><img src="./assets/jobs.png" alt=""></div>
 <div class="text-center">
   <h2 class="font-semibold text-2xl text-[#002C5C]">No jobs available</h2>
@@ -424,7 +424,7 @@
 
 
 <!-- rejected filtered job cards -->
- <section id="rejected-cards" class="display-magic w-[90%] mx-auto max-w-6xl mt-[30px]  space-y-4">
+ <section id="rejected-cards" class="display-magic w-[90%] mx-auto max-w-6xl mt-[30px]  space-y-4 hidden">
 
   <div class="py-[110px] flex gap-5 flex-col justify-center items-center bg-white rounded-lg border border-gray-100" id="rejected-skeleton">
 <div ><img src="./assets/jobs.png" alt=""></div>
@@ -438,5 +438,6 @@
 
 
 <script src="./scripts/helper.js"></script>
+<script src="./scripts/tab-filter.js"></script>
 </body>
 </html>
