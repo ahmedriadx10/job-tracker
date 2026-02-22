@@ -16,13 +16,24 @@ const getFilterButtonMainContainer = getElement("filter-button-container");
 getFilterButtonMainContainer.addEventListener("click", function (event) {
   const targetButton = event.target;
 
-  if (targetButton.classList.contains("filter-btn")) {
-    const allButtons = document.getElementsByClassName("filter-btn");
+  const allButtonn=getElement('all-btn')
+  const interViewBtn=getElement('interview-btn')
+  const rejectedBtn=getElement('rejected-btn')
+if(targetButton.classList.contains('filter-btn')){
 
-    for (const x of allButtons) {
-      x.classList.remove("bg-primary", "text-white");
-    }
+allButtonn.classList.remove('bg-primary','text-white')
+interViewBtn.classList.remove('bg-primary','text-white')
+rejectedBtn.classList.remove('bg-primary','text-white')
 
-    targetButton.classList.add("bg-primary", "text-white");
-  }
+  targetButton.classList.add('bg-primary','text-white')
+
+
+
+}
+
+
+
+
+
+
 });
