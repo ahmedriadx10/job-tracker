@@ -552,4 +552,32 @@ rejectedSelectedCardsParent.addEventListener("click", function (e) {
       rejectedDataRender();
     }
   }
+
+// rejected section delete button
+
+
+  if(needRejectedButton.classList.contains('card-delete')){
+    
+
+    const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
+
+    const companyName =
+      needRejectBtnParentNow.querySelector(".company-name").innerText;
+    const jobPosition =
+      needRejectBtnParentNow.querySelector(".job-position").innerText;
+
+rejectedData=rejectedData.filter(data=>{
+
+  return data.companyName!==companyName && data.jobPosition!==jobPosition
+
+})
+
+
+
+setDashBoardCount()
+rejectedDataRender()
+
+
+  }
+
 });
