@@ -17,7 +17,7 @@ function changeTab(id, id_2) {
   interviewTabAv.classList.add("hidden");
   rejectedTabAv.classList.add("hidden");
   const getSeparateAvialble = getElement(id_2);
-  console.log(getSeparateAvialble);
+
   getSeparateAvialble.classList.remove("hidden");
   for (const x of tabs) {
     x.classList.add("hidden");

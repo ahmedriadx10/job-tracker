@@ -344,7 +344,7 @@ allJobCards.addEventListener("click", function (event) {
 
   if (getTargetButton.classList.contains("card-delete")) {
     const getParentCard = getTargetButton.parentNode.parentNode.parentNode;
-    console.log(getParentCard);
+ 
     getParentCard.remove();
 
     dashBoardTotalPara.innerText = allJobCards.children.length;
