@@ -14,7 +14,6 @@ availableJobsSpan.innerText = totalJobsCard;
 const rejectedSkeleton = getElement("rejected-skeleton");
 const interviewSkeleton = getElement("interview-skeleton");
 
-
 allJobCards.addEventListener("click", function (event) {
   const getTargetButton = event.target;
 
@@ -114,44 +113,36 @@ allJobCards.addEventListener("click", function (event) {
     if (
       getTargetButton.nextElementSibling.classList.contains("clicked-rejected")
     ) {
+      //testing purpso only
 
+      const test_1 = rejectedSelectedCardsParent.children;
+      const newData = [];
 
+      for (const x of test_1) {
+        const makeCopy = x.cloneNode(true);
 
+        newData.push(makeCopy);
+      }
 
-//testing purpso only
+      const findElement = newData.findIndex((f) => {
+        const companyName = f.querySelector(".company-name").innerText;
 
-const test_1= rejectedSelectedCardsParent.children;
-    const newData = [];
+        const jobPoisiton = f.querySelector(".job-position").innerText;
+        console.log("surviving");
+        return companyName === getCompayName && jobPoisiton === getJobPosition;
+      });
 
-    for (const x of test_1) {
-      const makeCopy = x.cloneNode(true);
+      if (findElement >= 0) {
+        console.log(findElement);
+        console.log("checking");
 
-      newData.push(makeCopy);
-    }
-
-    const findElement = newData.findIndex((f) => {
-      const companyName = f.querySelector(".company-name").innerText;
-
-      const jobPoisiton = f.querySelector(".job-position").innerText;
-      console.log("surviving");
-      return companyName === getCompayName && jobPoisiton === getJobPosition;
-    });
-
-    if (findElement>=0) {
-console.log(findElement)
-console.log('checking')
-
-rejectedSelectedCardsParent.children[findElement].remove()
-    dashboardRejectedSelectCountPara.innerText =
-        rejectedSelectedCardsParent.children.length;
-    }
-
-
-
+        rejectedSelectedCardsParent.children[findElement].remove();
+        dashboardRejectedSelectCountPara.innerText =
+          rejectedSelectedCardsParent.children.length;
+      }
     }
 
     getTargetButton.classList.add("clicked-interview");
-
 
     // find
 
@@ -274,39 +265,36 @@ rejectedSelectedCardsParent.children[findElement].remove()
         "clicked-interview",
       )
     ) {
-  // /testing purpso only
+      // /testing purpso only
 
-const test_2= interviewSelectedCardsParent.children;
-    const newData = [];
+      const test_2 = interviewSelectedCardsParent.children;
+      const newData = [];
 
-    for (const x of test_2) {
-      const makeCopy = x.cloneNode(true);
+      for (const x of test_2) {
+        const makeCopy = x.cloneNode(true);
 
-      newData.push(makeCopy);
-    }
+        newData.push(makeCopy);
+      }
 
-    const findElement = newData.findIndex((f) => {
-      const companyName = f.querySelector(".company-name").innerText;
+      const findElement = newData.findIndex((f) => {
+        const companyName = f.querySelector(".company-name").innerText;
 
-      const jobPoisiton = f.querySelector(".job-position").innerText;
-      console.log("surviving");
-      return companyName === getCompayName && jobPoisiton === getJobPosition;
-    });
+        const jobPoisiton = f.querySelector(".job-position").innerText;
 
-    if (findElement>=0) {
-console.log(findElement)
-console.log('checking')
+        return companyName === getCompayName && jobPoisiton === getJobPosition;
+      });
 
-interviewSelectedCardsParent.children[findElement].remove()
-     dashBoardInterviewSelectCountPara.innerText =
-        interviewSelectedCardsParent.children.length;
-    }
+      if (findElement >= 0) {
+      
 
-
+        interviewSelectedCardsParent.children[findElement].remove();
+        dashBoardInterviewSelectCountPara.innerText =
+          interviewSelectedCardsParent.children.length;
+      }
     }
 
     // find
-//solved multiple add same cards
+    //solved multiple add same cards
     const getAllRejectedSelectionChilds = rejectedSelectedCardsParent.children;
     const newData = [];
 
