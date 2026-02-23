@@ -183,11 +183,11 @@ allJobCards.addEventListener("click", function (e) {
     const buttonParent = getTargetButton.closest(".job-card");
     const companyName = buttonParent.querySelector(".company-name").innerText;
     const jobPosition = buttonParent.querySelector(".job-position").innerText;
-    const jobLocation = buttonParent.querySelector(".job-location").innerText;
-    const jobTime = buttonParent.querySelector(".job-time").innerText;
-    const jobSalary = buttonParent.querySelector(".job-salary").innerText;
-    const jobStatus = buttonParent.querySelector(".job-status");
-    const jobDetail = buttonParent.querySelector(".job-detail").innerText;
+    // const jobLocation = buttonParent.querySelector(".job-location").innerText;
+    // const jobTime = buttonParent.querySelector(".job-time").innerText;
+    // const jobSalary = buttonParent.querySelector(".job-salary").innerText;
+    // const jobStatus = buttonParent.querySelector(".job-status");
+    // const jobDetail = buttonParent.querySelector(".job-detail").innerText;
 
     interviewData = interviewData.filter((data) => {
       return (
@@ -288,7 +288,15 @@ function interviewDataRender() {
             </button>
           </div>
 
+</div>
 
+           <div>
+          <button
+            class="card-delete btn  h-10 w-10 rounded-full border text-gray-600 border-gray-300 cursor-pointer"
+          >
+            <i class="text-2xl card-delete fa-regular fa-trash-can"></i>
+          </button>
+        </div>
 
 `;
 
@@ -382,8 +390,15 @@ function rejectedDataRender() {
               REJECTED
             </button>
           </div>
+</div>
 
-
+           <div>
+          <button
+            class="card-delete btn  h-10 w-10 rounded-full border text-gray-600 border-gray-300 cursor-pointer"
+          >
+            <i class="text-2xl card-delete fa-regular fa-trash-can"></i>
+          </button>
+        </div>
 
 `;
 
@@ -447,7 +462,42 @@ interviewSelectedCardsParent.addEventListener("click", function (e) {
       interviewDataRender();
       rejectedDataRender();
     }
+
+
+    return
   }
+
+
+  // interview section card delete
+
+  if(needRejectedButton.classList.contains('card-delete')){
+    
+
+    const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
+
+    const companyName =
+      needRejectBtnParentNow.querySelector(".company-name").innerText;
+    const jobPosition =
+      needRejectBtnParentNow.querySelector(".job-position").innerText;
+console.log(companyName)
+console.log(jobPosition)
+interviewData=interviewData.filter(data=>{
+
+  return data.companyName!==companyName && data.jobPosition!==jobPosition
+
+})
+
+
+
+setDashBoardCount()
+interviewDataRender()
+
+
+  }
+
+
+
+
 });
 
 //send card from rejected tab to interview tab
