@@ -400,3 +400,84 @@ function rejectedDataRender() {
     rejectedSelectedCardsParent.appendChild(div);
   });
 }
+
+
+
+
+
+
+
+
+
+//send card from interview tab to rejective tab
+
+
+
+interviewSelectedCardsParent.addEventListener('click',function(e){
+
+const needRejectedButton=e.target
+  if(needRejectedButton.classList.contains('rejected-btn')){
+ 
+    const needRejectBtnParentNow=needRejectedButton.closest('.job-card')
+
+ 
+    const companyName = needRejectBtnParentNow.querySelector(".company-name").innerText;
+    const jobPosition = needRejectBtnParentNow.querySelector(".job-position").innerText;
+    const jobLocation = needRejectBtnParentNow.querySelector(".job-location").innerText;
+    const jobTime = needRejectBtnParentNow.querySelector(".job-time").innerText;
+    const jobSalary = needRejectBtnParentNow.querySelector(".job-salary").innerText;
+    const jobStatus = needRejectBtnParentNow.querySelector(".job-status");
+    const jobDetail = needRejectBtnParentNow.querySelector(".job-detail").innerText;
+
+const transferData={
+  companyName,
+  jobPosition,
+  jobLocation,
+  jobTime,
+  jobSalary,
+  status:'REJECTED',
+  jobDetail
+}
+
+const findSimilarCardRejected=rejectedData.find((x)=>{
+
+return x.companyName===transferData.companyName && x.jobPosition===transferData.jobPosition
+
+
+})
+
+
+
+if(!findSimilarCardRejected){
+
+rejectedData.push(transferData)
+
+
+interviewData=interviewData.filter(data=>{
+
+return data.companyName!==transferData.companyName && data.jobPosition !==transferData.jobPosition
+
+
+
+
+})
+
+
+setDashBoardCount()
+interviewDataRender()
+rejectedDataRender()
+
+
+}
+
+
+  }
+
+})
+
+
+
+//send card from rejected tab to interview tab
+
+
+
