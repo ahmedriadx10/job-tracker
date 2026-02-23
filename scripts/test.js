@@ -99,7 +99,13 @@ allJobCards.addEventListener("click", function (event) {
 
 <!-- job card right side button area -->
 
-<div><button class="card-delete w-10 h-10  rounded-full border-2 text-gray-600 border-gray-300 cursor-pointer"><i class="fa-regular fa-trash-can"></i></button></div>
+       <div>
+          <button
+            class=" btn  h-10 w-10 rounded-full border text-gray-600 border-gray-300 cursor-pointer"
+          >
+            <i class="text-2xl card-delete fa-regular fa-trash-can"></i>
+          </button>
+        </div>
 `;
 
     div.setAttribute(
@@ -255,7 +261,13 @@ allJobCards.addEventListener("click", function (event) {
 
 <!-- job card right side button area -->
 
-<div><button class="card-delete w-10 h-10  rounded-full border-2 text-gray-600 border-gray-300 cursor-pointer"><i class="fa-regular fa-trash-can"></i></button></div>
+       <div>
+          <button
+            class=" btn  h-10 w-10 rounded-full border text-gray-600 border-gray-300 cursor-pointer"
+          >
+            <i class="text-2xl card-delete fa-regular fa-trash-can"></i>
+          </button>
+        </div>
 `;
 
     div.setAttribute(
@@ -326,5 +338,37 @@ allJobCards.addEventListener("click", function (event) {
     }
 
     getTargetButton.classList.add("clicked-rejected");
+  }
+
+  // card delete button
+
+  if (getTargetButton.classList.contains("card-delete")) {
+    const getParentCard = getTargetButton.parentNode.parentNode.parentNode;
+    console.log(getParentCard);
+    getParentCard.remove();
+
+    dashBoardTotalPara.innerText = allJobCards.children.length;
+    if (allJobCards.children.length === 0) {
+      const defaultSkeleton = document.createElement("div");
+
+      defaultSkeleton.innerHTML = `
+    <div><img src="./assets/jobs.png" alt="" /></div>
+        <div class="text-center">
+          <h2 class="font-semibold text-2xl text-[#002C5C]">
+            No jobs available
+          </h2>
+          <p class="text-[#64748B]">
+            Check back soon for new job opportunities
+          </p>
+        </div>
+`;
+
+      defaultSkeleton.setAttribute(
+        "class",
+        "py-[110px] flex gap-5 flex-col justify-center items-center bg-white rounded-lg border border-gray-100",
+      );
+
+      allJobCards.appendChild(defaultSkeleton);
+    }
   }
 });
