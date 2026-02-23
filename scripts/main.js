@@ -6,9 +6,8 @@ const totalJobsCard = allJobCards.children.length;
 const dashBoardInterviewSelectCountPara = getElement(
   "dashboard-interview-count",
 );
-const availabeleInterviewCount=getElement('interview-avialable-count')
-const availableRejectedCount=getElement('rejected-avilable-count')
-
+const availabeleInterviewCount = getElement("interview-avialable-count");
+const availableRejectedCount = getElement("rejected-avilable-count");
 
 const dashboardRejectedSelectCountPara = getElement("dashboard-rejected-count");
 
@@ -24,14 +23,12 @@ function setDashBoardCount() {
   dashBoardTotalPara.innerText = allJobCards.children.length;
   dashBoardInterviewSelectCountPara.innerText = interviewData.length;
   dashboardRejectedSelectCountPara.innerText = rejectedData.length;
-availableJobsSpan.innerText=allJobCards.children.length
+  availableJobsSpan.innerText = allJobCards.children.length;
 
-availabeleInterviewCount.innerText=interviewData.length
-availableRejectedCount.innerText=rejectedData.length
-
+  availabeleInterviewCount.innerText = interviewData.length;
+  availableRejectedCount.innerText = rejectedData.length;
 
   if (allJobCards.children.length === 0) {
-    
     const defaultSkeleton = document.createElement("div");
 
     defaultSkeleton.innerHTML = `
@@ -53,8 +50,6 @@ availableRejectedCount.innerText=rejectedData.length
     allJobCards.appendChild(defaultSkeleton);
     return;
   }
-
-
 }
 
 setDashBoardCount();
@@ -401,83 +396,110 @@ function rejectedDataRender() {
   });
 }
 
-
-
-
-
-
-
-
-
 //send card from interview tab to rejective tab
 
+interviewSelectedCardsParent.addEventListener("click", function (e) {
+  const needRejectedButton = e.target;
+  if (needRejectedButton.classList.contains("rejected-btn")) {
+    const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
 
-
-interviewSelectedCardsParent.addEventListener('click',function(e){
-
-const needRejectedButton=e.target
-  if(needRejectedButton.classList.contains('rejected-btn')){
- 
-    const needRejectBtnParentNow=needRejectedButton.closest('.job-card')
-
- 
-    const companyName = needRejectBtnParentNow.querySelector(".company-name").innerText;
-    const jobPosition = needRejectBtnParentNow.querySelector(".job-position").innerText;
-    const jobLocation = needRejectBtnParentNow.querySelector(".job-location").innerText;
+    const companyName =
+      needRejectBtnParentNow.querySelector(".company-name").innerText;
+    const jobPosition =
+      needRejectBtnParentNow.querySelector(".job-position").innerText;
+    const jobLocation =
+      needRejectBtnParentNow.querySelector(".job-location").innerText;
     const jobTime = needRejectBtnParentNow.querySelector(".job-time").innerText;
-    const jobSalary = needRejectBtnParentNow.querySelector(".job-salary").innerText;
+    const jobSalary =
+      needRejectBtnParentNow.querySelector(".job-salary").innerText;
     const jobStatus = needRejectBtnParentNow.querySelector(".job-status");
-    const jobDetail = needRejectBtnParentNow.querySelector(".job-detail").innerText;
+    const jobDetail =
+      needRejectBtnParentNow.querySelector(".job-detail").innerText;
 
-const transferData={
-  companyName,
-  jobPosition,
-  jobLocation,
-  jobTime,
-  jobSalary,
-  status:'REJECTED',
-  jobDetail
-}
+    const transferData = {
+      companyName,
+      jobPosition,
+      jobLocation,
+      jobTime,
+      jobSalary,
+      status: "REJECTED",
+      jobDetail,
+    };
 
-const findSimilarCardRejected=rejectedData.find((x)=>{
+    const findSimilarCardRejected = rejectedData.find((x) => {
+      return (
+        x.companyName === transferData.companyName &&
+        x.jobPosition === transferData.jobPosition
+      );
+    });
 
-return x.companyName===transferData.companyName && x.jobPosition===transferData.jobPosition
+    if (!findSimilarCardRejected) {
+      rejectedData.push(transferData);
 
+      interviewData = interviewData.filter((data) => {
+        return (
+          data.companyName !== transferData.companyName &&
+          data.jobPosition !== transferData.jobPosition
+        );
+      });
 
-})
-
-
-
-if(!findSimilarCardRejected){
-
-rejectedData.push(transferData)
-
-
-interviewData=interviewData.filter(data=>{
-
-return data.companyName!==transferData.companyName && data.jobPosition !==transferData.jobPosition
-
-
-
-
-})
-
-
-setDashBoardCount()
-interviewDataRender()
-rejectedDataRender()
-
-
-}
-
-
+      setDashBoardCount();
+      interviewDataRender();
+      rejectedDataRender();
+    }
   }
-
-})
-
-
+});
 
 //send card from rejected tab to interview tab
 
+rejectedSelectedCardsParent.addEventListener("click", function (e) {
+  const needRejectedButton = e.target;
+  if (needRejectedButton.classList.contains("interview-btn")) {
+    const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
 
+    const companyName =
+      needRejectBtnParentNow.querySelector(".company-name").innerText;
+    const jobPosition =
+      needRejectBtnParentNow.querySelector(".job-position").innerText;
+    const jobLocation =
+      needRejectBtnParentNow.querySelector(".job-location").innerText;
+    const jobTime = needRejectBtnParentNow.querySelector(".job-time").innerText;
+    const jobSalary =
+      needRejectBtnParentNow.querySelector(".job-salary").innerText;
+    const jobStatus = needRejectBtnParentNow.querySelector(".job-status");
+    const jobDetail =
+      needRejectBtnParentNow.querySelector(".job-detail").innerText;
 
+    const transferData = {
+      companyName,
+      jobPosition,
+      jobLocation,
+      jobTime,
+      jobSalary,
+      status: "INTERVIEW",
+      jobDetail,
+    };
+
+    const findSimilarCardInterview = interviewData.find((x) => {
+      return (
+        x.companyName === transferData.companyName &&
+        x.jobPosition === transferData.jobPosition
+      );
+    });
+
+    if (!findSimilarCardInterview) {
+      interviewData.push(transferData);
+
+      rejectedData = rejectedData.filter((data) => {
+        return (
+          data.companyName !== transferData.companyName &&
+          data.jobPosition !== transferData.jobPosition
+        );
+      });
+
+      setDashBoardCount();
+      interviewDataRender();
+      rejectedDataRender();
+    }
+  }
+});
