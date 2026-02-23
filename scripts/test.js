@@ -13,7 +13,8 @@ const availableJobsSpan = getElement("available-count");
 availableJobsSpan.innerText = totalJobsCard;
 const rejectedSkeleton = getElement("rejected-skeleton");
 const interviewSkeleton = getElement("interview-skeleton");
-
+const interviewTabAv = getElement("interview-avialable-count");
+const rejectedTabAv = getElement("rejected-avilable-count");
 allJobCards.addEventListener("click", function (event) {
   const getTargetButton = event.target;
 
@@ -139,6 +140,7 @@ allJobCards.addEventListener("click", function (event) {
         rejectedSelectedCardsParent.children[findElement].remove();
         dashboardRejectedSelectCountPara.innerText =
           rejectedSelectedCardsParent.children.length;
+        rejectedTabAv.innerText = dashboardRejectedSelectCountPara.innerText;
       }
     }
 
@@ -167,6 +169,7 @@ allJobCards.addEventListener("click", function (event) {
       interviewSelectedCardsParent.appendChild(div);
       dashBoardInterviewSelectCountPara.innerText =
         interviewSelectedCardsParent.children.length;
+      interviewTabAv.innerText = dashBoardInterviewSelectCountPara.innerText;
     } else {
       return;
     }
@@ -285,11 +288,10 @@ allJobCards.addEventListener("click", function (event) {
       });
 
       if (findElement >= 0) {
-      
-
         interviewSelectedCardsParent.children[findElement].remove();
         dashBoardInterviewSelectCountPara.innerText =
           interviewSelectedCardsParent.children.length;
+        interviewTabAv.innerText = dashBoardInterviewSelectCountPara.innerText;
       }
     }
 
@@ -314,8 +316,11 @@ allJobCards.addEventListener("click", function (event) {
 
     if (!findElement) {
       rejectedSelectedCardsParent.appendChild(div);
-      dashboardRejectedSelectCountPara.innerText =
+      const rejSelecteParentLegnth =
         rejectedSelectedCardsParent.children.length;
+      dashboardRejectedSelectCountPara.innerText = rejSelecteParentLegnth;
+
+      rejectedTabAv.innerText = dashboardRejectedSelectCountPara.innerText;
     } else {
       return;
     }
