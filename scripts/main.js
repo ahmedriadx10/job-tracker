@@ -1,3 +1,6 @@
+// Main codes are here
+
+
 const allJobCards = getElement("job-card-container");
 const interviewSelectedCardsParent = getElement("interview-cards");
 const rejectedSelectedCardsParent = getElement("rejected-cards");
@@ -183,11 +186,7 @@ allJobCards.addEventListener("click", function (e) {
     const buttonParent = getTargetButton.closest(".job-card");
     const companyName = buttonParent.querySelector(".company-name").innerText;
     const jobPosition = buttonParent.querySelector(".job-position").innerText;
-    // const jobLocation = buttonParent.querySelector(".job-location").innerText;
-    // const jobTime = buttonParent.querySelector(".job-time").innerText;
-    // const jobSalary = buttonParent.querySelector(".job-salary").innerText;
-    // const jobStatus = buttonParent.querySelector(".job-status");
-    // const jobDetail = buttonParent.querySelector(".job-detail").innerText;
+
 
     interviewData = interviewData.filter((data) => {
       return (

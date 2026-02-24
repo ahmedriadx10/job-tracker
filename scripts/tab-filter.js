@@ -1,13 +1,10 @@
-//tab filter
+//tab filter codes here
 
 function changeTab(id, id_2) {
   const tabs = document.getElementsByClassName("display-magic");
   const allAvailableContainer =
     document.getElementsByClassName("avilable-container");
-  // for(const av of allAvailableContainer){
-
-  //   av.classList.add('hidden')
-  // }
+ 
 
   const globalTab = getElement("global-av");
   const interviewTabAv = getElement("interview-av");
