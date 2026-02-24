@@ -463,41 +463,29 @@ interviewSelectedCardsParent.addEventListener("click", function (e) {
       rejectedDataRender();
     }
 
-
-    return
+    return;
   }
-
 
   // interview section card delete
 
-  if(needRejectedButton.classList.contains('card-delete')){
-    
-
+  if (needRejectedButton.classList.contains("card-delete")) {
     const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
 
     const companyName =
       needRejectBtnParentNow.querySelector(".company-name").innerText;
     const jobPosition =
       needRejectBtnParentNow.querySelector(".job-position").innerText;
-console.log(companyName)
-console.log(jobPosition)
-interviewData=interviewData.filter(data=>{
+    console.log(companyName);
+    console.log(jobPosition);
+    interviewData = interviewData.filter((data) => {
+      return (
+        data.companyName !== companyName && data.jobPosition !== jobPosition
+      );
+    });
 
-  return data.companyName!==companyName && data.jobPosition!==jobPosition
-
-})
-
-
-
-setDashBoardCount()
-interviewDataRender()
-
-
+    setDashBoardCount();
+    interviewDataRender();
   }
-
-
-
-
 });
 
 //send card from rejected tab to interview tab
@@ -553,12 +541,9 @@ rejectedSelectedCardsParent.addEventListener("click", function (e) {
     }
   }
 
-// rejected section delete button
+  // rejected section delete button
 
-
-  if(needRejectedButton.classList.contains('card-delete')){
-    
-
+  if (needRejectedButton.classList.contains("card-delete")) {
     const needRejectBtnParentNow = needRejectedButton.closest(".job-card");
 
     const companyName =
@@ -566,18 +551,13 @@ rejectedSelectedCardsParent.addEventListener("click", function (e) {
     const jobPosition =
       needRejectBtnParentNow.querySelector(".job-position").innerText;
 
-rejectedData=rejectedData.filter(data=>{
+    rejectedData = rejectedData.filter((data) => {
+      return (
+        data.companyName !== companyName && data.jobPosition !== jobPosition
+      );
+    });
 
-  return data.companyName!==companyName && data.jobPosition!==jobPosition
-
-})
-
-
-
-setDashBoardCount()
-rejectedDataRender()
-
-
+    setDashBoardCount();
+    rejectedDataRender();
   }
-
 });
