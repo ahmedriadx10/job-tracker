@@ -118,8 +118,8 @@ allJobCards.addEventListener("click", function (e) {
     rejectedDataRender();
     setDashBoardCount();
 
-    console.log(interviewData);
-    console.log(rejectedData);
+
+   
   }
 
   // rejected button
@@ -251,7 +251,7 @@ function interviewDataRender() {
           </div>
 
           <!-- location,type and salary -->
-          <div class="flex gap-2 text-[14px] text-[#64748B]">
+          <div class="flex flex-col sm:flex-row gap-2 text-[14px] text-[#64748B]">
             <span class="job-location">${data.jobLocation}</span>
             <ul class="flex gap-2">
               <li class="job-time flex items-center gap-1.5">• Part-time</li>
@@ -354,7 +354,7 @@ function rejectedDataRender() {
           </div>
 
           <!-- location,type and salary -->
-          <div class="flex gap-2 text-[14px] text-[#64748B]">
+          <div class="flex flex-col sm:flex-row gap-2 text-[14px] text-[#64748B]">
             <span class="job-location">${rejectd.jobLocation}</span>
             <ul class="flex gap-2">
               <li class="job-time flex items-center gap-1.5">• Part-time</li>
@@ -474,8 +474,7 @@ interviewSelectedCardsParent.addEventListener("click", function (e) {
       needRejectBtnParentNow.querySelector(".company-name").innerText;
     const jobPosition =
       needRejectBtnParentNow.querySelector(".job-position").innerText;
-    console.log(companyName);
-    console.log(jobPosition);
+ 
     interviewData = interviewData.filter((data) => {
       return (
         data.companyName !== companyName && data.jobPosition !== jobPosition
